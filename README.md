@@ -181,4 +181,4 @@ http://localhost:8080/StudentManagement/login.html
 
 ## 📄 License
 
-本项目为课程设计作品，仅供学习参考。
+本项目基于 [MIT License](LICENSE) 开源，仅供学习参考，欢迎 Fork 与二次开发。
