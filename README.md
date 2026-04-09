@@ -12,6 +12,7 @@
 - [数据库设计](#数据库设计)
 - [快速开始](#快速开始)
 - [页面预览](#页面预览)
+- [License](#-license)
 
 ---
 
@@ -60,44 +61,48 @@
 ## 项目结构
 
 ```
-code/
-├── src/
-│   ├── dao/                  # 数据访问层（DAO）
-│   │   ├── ClassDao.java
-│   │   ├── CourseDao.java
-│   │   ├── DepartmentDao.java
-│   │   ├── SCDao.java
-│   │   ├── StudentDao.java
-│   │   └── UserDao.java
-│   ├── model/                # 实体模型（JavaBean）
-│   │   ├── Class.java
-│   │   ├── Course.java
-│   │   ├── Course_avg.java
-│   │   ├── Course_fail_rate.java
-│   │   ├── Course_ranking.java
-│   │   ├── Department.java
-│   │   ├── SC.java
-│   │   ├── Student.java
-│   │   └── User.java
-│   ├── service/              # 业务逻辑层（Servlet）
-│   │   ├── AdminDao.java     # 管理员所有操作的核心 Servlet
-│   │   ├── LoginServlet.java
-│   │   ├── RegisterServlet.java
-│   │   └── UserExitServlet.java
-│   └── utils/
-│       └── DBUtils.java      # 数据库连接工具类
-└── WebContent/
-    ├── login.html            # 登录页
-    ├── register.html         # 注册页
-    ├── admin.jsp             # 管理员主页
-    ├── user.jsp              # 普通用户主页
-    ├── message.jsp           # 提示信息页
-    ├── css/                  # 样式文件
-    ├── js/                   # 脚本文件
-    ├── images/               # 图片资源
-    └── WEB-INF/
-        ├── web.xml           # Servlet 配置
-        └── lib/              # 依赖 JAR 包
+Student-Management-sys/
+├── studentinfomanagement.sql # 数据库初始化脚本（建库 + 建表 + 示例数据）
+├── LICENSE                   # MIT 开源协议
+├── README.md
+└── code/
+    ├── src/
+    │   ├── dao/                  # 数据访问层（DAO）
+    │   │   ├── ClassDao.java
+    │   │   ├── CourseDao.java
+    │   │   ├── DepartmentDao.java
+    │   │   ├── SCDao.java
+    │   │   ├── StudentDao.java
+    │   │   └── UserDao.java
+    │   ├── model/                # 实体模型（JavaBean）
+    │   │   ├── Class.java
+    │   │   ├── Course.java
+    │   │   ├── Course_avg.java
+    │   │   ├── Course_fail_rate.java
+    │   │   ├── Course_ranking.java
+    │   │   ├── Department.java
+    │   │   ├── SC.java
+    │   │   ├── Student.java
+    │   │   └── User.java
+    │   ├── service/              # 业务逻辑层（Servlet）
+    │   │   ├── AdminDao.java     # 管理员所有操作的核心 Servlet
+    │   │   ├── LoginServlet.java
+    │   │   ├── RegisterServlet.java
+    │   │   └── UserExitServlet.java
+    │   └── utils/
+    │       └── DBUtils.java      # 数据库连接工具类
+    └── WebContent/
+        ├── login.html            # 登录页
+        ├── register.html         # 注册页
+        ├── admin.jsp             # 管理员主页
+        ├── user.jsp              # 普通用户主页
+        ├── message.jsp           # 提示信息页
+        ├── css/                  # 样式文件
+        ├── js/                   # 脚本文件
+        ├── images/               # 图片资源
+        └── WEB-INF/
+            ├── web.xml           # Servlet 配置
+            └── lib/              # 依赖 JAR 包
 ```
 
 ---
@@ -135,13 +140,21 @@ code/
 git clone https://github.com/quanmianup/Student-Management-sys.git
 ```
 
-**2. 创建数据库**
+**2. 初始化数据库**
 
-```sql
-CREATE DATABASE studentinfomanagement CHARACTER SET utf8 COLLATE utf8_general_ci;
+使用项目根目录提供的 `studentinfomanagement.sql` 脚本一键完成建库、建表和示例数据导入：
+
+```bash
+mysql -u root -p < studentinfomanagement.sql
 ```
 
-根据 `model` 包中各实体类的字段，在数据库中创建对应的数据表。
+或在 MySQL 客户端中执行：
+
+```sql
+SOURCE /path/to/studentinfomanagement.sql;
+```
+
+> 脚本会自动创建 `studentinfomanagement` 数据库并建立所有数据表（含外键约束）及示例数据。
 
 **3. 配置数据库连接**
 
